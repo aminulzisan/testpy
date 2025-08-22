@@ -1,23 +1,13 @@
+import os
 from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/")
 def home():
-    return """
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <title>Basic Flask Page</title>
-    </head>
-    <body>
-        <h1>Welcome to Flask!</h1>
-        <p>This is a basic HTML page served by Flask.</p>
-    </body>
-    </html>
-    """
+    return "Hello, Zeeploy!"
 
-if __name__ == '__main__':
-    app.run(port=5000)
-  
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # Use platform-assigned PORT
+    app.run(host="0.0.0.0", port=port)
+    
